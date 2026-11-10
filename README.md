@@ -52,9 +52,6 @@ certutil -hashfile MLWorkbench.exe SHA256
 db745979458c7ee6c5b75bc263cbb9661c2b450814f3e18dbe76a3ac3f30aa7e
 ```
 
-Windows SmartScreen will warn once because the exe is unsigned ("More info" → "Run
-anyway"). The app has no network code: nothing leaves the machine.
-
 ### How this binary was verified
 
 Built with PyInstaller 6.22 on Python 3.11.9 with numpy 1.26.4 / pandas 2.2.3 /
