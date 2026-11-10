@@ -1,3 +1,16 @@
+# ---- ML Workbench project rules (keep above the generic template) ----
+# The Windows binary never belongs in git — GitHub refuses files over 100 MB.
+# It is attached to Releases instead.
+*.exe
+# App output: trained models and run folders
+MLWorkbench_runs/
+*_runs/
+*.pkl
+# Dev/test outputs
+guide_runs/
+build_logs/
+# ---- end project rules ----
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
