@@ -1,0 +1,13 @@
+# GitHub renders this as the "Sponsor" button on the repository and in the sidebar.
+#
+# Before this works: apply at https://github.com/sponsors/accounts and get approved
+# (GitHub reviews every profile; Egypt is a supported payout region, so a bank
+# account in Egypt is fine — the account holder's country and bank country must match).
+#
+# Until approval, the link below simply 404s — that is harmless, but replace or
+# delete this file if you prefer a clean sidebar.
+
+github: [Ahmed-Abdulnaim]
+
+# Optional: add these once the accounts exist. They render as extra sponsor links.
+# custom: ["https://www.buymeacoffee.com/YOUR_HANDLE"]

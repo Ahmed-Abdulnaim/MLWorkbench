@@ -1,0 +1,71 @@
+name: CI
+
+# Runs the engine end to end on Linux for every push and pull request.
+# No GUI is started — tests/smoke.py drives mlw.core directly.
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "docs/**"
+      - "site/**"
+      - "**.md"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    name: smoke (py${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install runtime dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # requirements.txt lists the hard minimums; CI also proves the app works
+          # on the current releases (numpy 2.x, pandas 3.x, sklearn 1.9.x).
+          python -m pip install -r requirements.txt
+
+      - name: Report versions
+        run: python -c "import numpy,pandas,sklearn,matplotlib;print('numpy',numpy.__version__);print('pandas',pandas.__version__);print('sklearn',sklearn.__version__);print('matplotlib',matplotlib.__version__)"
+
+      - name: Smoke test the engine
+        run: python tests/smoke.py
+
+      - name: CLI entry points respond
+        run: |
+          python run_mlworkbench.py audit sample_data/reactor_yield.csv --target yield_pct
+          python run_mlworkbench.py --help || true
+
+  molecules:
+    name: molecules (rdkit)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install with RDKit
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt rdkit
+      - name: SMILES -> descriptors
+        run: |
+          python run_mlworkbench.py smiles sample_data/molecules.csv \
+            --column SMILES --mode morgan --bits 1024 -o /tmp/features.csv
+          python -c "import pandas as pd; d=pd.read_csv('/tmp/features.csv'); print(d.shape); assert d.shape[0] > 0"
