@@ -1,0 +1,13 @@
+run_id,batch_id,temperature_C,pressure_bar,temperature_C_dup,catalyst_wt,reactor,solvent,grade
+R-0001,B-71,91.3,3.97,91.3,2.19,R2, ethanol ,A
+R-0002,B-71,104.9,3.32,104.9,1.43,R1,ethanol,A
+R-0003,B-72,98.8,2.71,98.8,0.66,R2,Ethanol,B
+R-0004,B-72,71.3,4.51,71.3,1.80,R1,water,B
+R-0005,B-73,75.0,2.65,75.0,2.39,R2,water,A
+R-0006,B-73,103.7,4.69,103.7,0.98,R1,ethanol,A
+R-0007,B-74,60.3,1.27,60.3,1.17,R2,water,C
+R-0008,B-74,101.1,2.72,101.1,1.84,R1,ethanol,B
+R-0009,B-75,75.2,2.00,75.2,0.81,R1,water,
+R-0010,B-75,73.9,4.22,73.9,0.96,R2,water,B
+R-0011,B-76,72.7,3.71,72.7,2.50,R2,ethanol,A
+R-0012,B-76,82.3,3.87,82.3,2.11,R1,ethanol,B

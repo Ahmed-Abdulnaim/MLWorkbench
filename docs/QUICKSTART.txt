@@ -1,0 +1,54 @@
+ML WORKBENCH 1.0 — quick start
+==============================
+
+No installation needed. Double-click MLWorkbench.exe.
+(First launch of the single-file build takes 10-20 seconds while Windows unpacks it.
+Windows SmartScreen may warn: "More info" -> "Run anyway". The exe is unsigned.)
+
+SEVEN STEPS
+-----------
+1. Data tab -> Open CSV...  Pick your file. Choose the target column.
+   Untick anything that must not be a feature (IDs, other outcomes).
+   Read the health-check list: red = fix first, amber = judgement call.
+
+2. Train tab -> the starred models are the defaults. Set folds (5), seed (77),
+   search budget (12). Keep "holdout fraction" ticked: that is your honest score.
+   Press "Run training".
+
+3. Results tab -> the table is sorted by the main metric, with the BASELINE pinned
+   in the list. A model that does not beat the baseline is worthless no matter how
+   good its number looks. The line at the top tells you which model to use and why.
+   Double-click a row for per-fold scores and chosen hyperparameters.
+
+4. Predict tab -> pick the saved model (.pkl, in the runs folder) and a CSV with the
+   same columns. Rows outside the training range are flagged as extrapolation.
+
+5. Optimise tab -> "Load ranges", press "Run optimisation". Amber rows = the best
+   value sits at the edge of your search grid (the real optimum may be outside it).
+   Red rows = outside the training range: the model is guessing there.
+
+6. Molecules tab -> CSV with a SMILES column -> descriptors or fingerprints.
+   "Check applicability domain" tells you which molecules are unlike anything the
+   model was trained on.
+
+7. Every run writes a folder under %USERPROFILE%\MLWorkbench_runs with
+   run.json (all settings + data fingerprint), report.md (paste into your lab book),
+   metrics.csv, plots\ and models\.
+
+SAMPLES
+-------
+sample_data\ contains a small reactor dataset to try everything immediately:
+   reactor_yield.csv          regression target: yield_pct
+   reactor_predict.csv        same columns, no target -> use in the Predict tab
+   molecules.csv              SMILES + measured logS -> Molecules tab
+
+COMMAND LINE (optional)
+-----------------------
+MLWorkbench.exe audit data.csv
+MLWorkbench.exe train data.csv --target yield_pct --search 20 --holdout 0.2
+MLWorkbench.exe predict runs\...\models\RandomForest.pkl new.csv -o out.csv
+MLWorkbench.exe --help
+Type "MLWorkbench.exe <command> --help" for every option.
+
+Verify a build at any time:
+MLWorkbench.exe --selftest %TEMP%\mlw_check   -> writes selftest.json
