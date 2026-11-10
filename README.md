@@ -1,9 +1,22 @@
 # ML Workbench
 
-A no-code machine-learning workbench for tabular CSV data and molecules — built to close the
-gaps that make GUI ML tools like **EZmachinelearning** frustrating: no baseline to compare
-against, preprocessing that is not saved with the model, silent data-quality failures, no
-honest holdout, no record of what was run.
+**No-code machine learning for tabular CSV data and molecules.**
+Point it at a CSV, pick a column, and get a model with a baseline to beat, an untouched
+holdout, and a written record of every choice it made.
+
+[**Website**](https://ahmed-abdulnaim.github.io/MLWorkbench/) ·
+[**Download**](../../releases/latest) ·
+[**User guide (82 pages)**](docs/MLWorkbench_User_Guide.pdf) ·
+[**Sponsor**](https://github.com/sponsors/Ahmed-Abdulnaim)
+
+[![License: MIT](https://img.shields.io/badge/license-MIT-0d6f63.svg)](LICENSE)
+[![Platform: Windows](https://img.shields.io/badge/platform-Windows%2010%2F11-0d6f63.svg)](../../releases/latest)
+[![Offline: no network code](https://img.shields.io/badge/network-none%20by%20design-0d6f63.svg)](#)
+[![Version](https://img.shields.io/badge/version-1.0.0-0d6f63.svg)](../../releases/latest)
+
+Built to close the gaps that make GUI ML tools like **EZmachinelearning** frustrating: no
+baseline to compare against, preprocessing that is not saved with the model, silent
+data-quality failures, no honest holdout, no record of what was run.
 
 Windows desktop app · Python 3.11 · scikit-learn · RDKit · single `.exe` · completely offline.
 
@@ -199,12 +212,42 @@ mlworkbench/
 ├── tests/
 │   ├── smoke.py           # end-to-end core test, no GUI
 │   └── gui_shot.py        # headless GUI drive + screenshots
+├── site/
+│   └── index.html         # the landing page (GitHub Pages, self-contained)
+├── .github/
+│   ├── FUNDING.yml        # sponsor button
+│   └── workflows/
+│       ├── ci.yml         # engine smoke test on every push (Python 3.11 + 3.12)
+│       └── build-exe.yml  # builds + self-tests the Windows exe, attaches it to releases
 ├── assets/icon.ico
-├── build_windows.bat
-└── .github/workflows/build-exe.yml
+└── build_windows.bat
 ```
 
 ---
+
+## Support the project
+
+ML Workbench is free, MIT licensed, and stays that way. There is no paid tier, no feature
+gate, no telemetry and no licence check — the app contains no network code at all. So there
+is no "pro version" to sell you; the only way this gets maintained is people deciding it is
+worth something.
+
+**[Sponsor on GitHub](https://github.com/sponsors/Ahmed-Abdulnaim)** — recurring or one-off,
+zero platform fee on personal accounts. Best option if the app saves your team time and you
+want the next release funded.
+
+**Paid help, if you'd rather ship than learn** — the things people actually ask for after
+downloading:
+
+| Service | From | What you get |
+|---|---|---|
+| **Setup session** | $90 | 60 minutes on your own data: loading it, reading the audit, setting the holdout and search budget properly, interpreting the results table. Recording included. |
+| **Analysis on your data** | $250 | You send a CSV and the question. You get the run folder — audit, trained models, baseline, honest holdout, `report.md`, plots, reusable `.pkl` — plus a call to walk through the findings. |
+| **Custom build** | $600 | New models, metrics or import formats (Excel, SQL, LIMS exports), a branded build for your lab, batch scoring scripts, documentation and handover. |
+
+Commercial use needs no purchase — the MIT licence already grants it. If you want a quote or
+just have a question about whether the tool fits your data, open an issue or use the contact
+link on the [website](https://ahmed-abdulnaim.github.io/MLWorkbench/).
 
 ## License
 

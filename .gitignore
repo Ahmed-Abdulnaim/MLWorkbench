@@ -179,8 +179,10 @@ venv.bak/
 # Rope project settings
 .ropeproject
 
-# mkdocs/Zensical documentation
-/site
+# mkdocs/Zensical documentation output.
+# NOTE: /site is deliberately NOT ignored — it holds the GitHub Pages landing page
+# (site/index.html + site/img/). If you ever add mkdocs, exclude its build dir instead:
+#   site_build/
 
 # mypy
 .mypy_cache/
