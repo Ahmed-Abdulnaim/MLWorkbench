@@ -10,7 +10,7 @@ Windows desktop app · Python 3.11 · scikit-learn · RDKit · single `.exe` · 
 > **New here? Read [`docs/MLWorkbench_User_Guide.pdf`](docs/MLWorkbench_User_Guide.pdf)** — 82 pages,
 > written for readers with no machine-learning background: foundations in plain language, ten
 > step-by-step tutorials on the bundled sample data, and a reference for every tab, model and output
-> file. The same PDF sits at the top of the workspace as `MLWorkbench_User_Guide.pdf`.
+> file.
 
 ![Results tab](docs/screenshots/03_results.png)
 
